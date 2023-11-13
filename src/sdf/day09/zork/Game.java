@@ -17,7 +17,7 @@ public class Game {
     public static List<String> inventory = new LinkedList<>();
 
     public static void loadGame (String fileName) throws IOException {
-        File file = new File(fileName);
+        // File file = new File(fileName);
 
         try (FileReader fr = new FileReader(fileName)) {
             BufferedReader br = new BufferedReader(fr);
