@@ -79,6 +79,7 @@ public class GameOfLife {
     } 
 
     public void evaluateBoard() {
+        // make copy of board so that during evaluation, original board is not altered midway
         int[][] copyBoard = new int[rows][columns];
         for(int i = 0; i < rows; i++){
             copyBoard[i] = board[i].clone();
@@ -111,8 +112,10 @@ public class GameOfLife {
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if ((rowIndex + i) < 0 || (rowIndex + i) >= rows || (columnIndex + j) < 0 || (columnIndex + j) >= columns) {
+                    // ignore non-existant spaces and avoid index out of bound errors
                     continue;
                 } else if (i == 0 && j == 0) {
+                    // do not count the cell itself
                     continue;
                 } else {
                     count += board[rowIndex + i][columnIndex + j];
